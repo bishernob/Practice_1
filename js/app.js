@@ -576,17 +576,163 @@ console.log(cars);
 
 
 
+//Write a factory function createCar that accepts three string arguments brand, name, color 
+//and returns an object representing the car.
+
+
+const createCar = function (brand, name, color) {
+
+  let newcar_obj = {}
+   newcar_obj={brand,name,color};
+  // newcar_obj['brand']=brand
+  Practice.append("new car brand =   "+newcar_obj.brand+"   ",newcar_obj.name+"     ",newcar_obj.color);
+  var newline = document.createElement("br");
+  Practice.append(newline);
+
+};
+
+createCar("Toyota", "Prius", "Black"); // => {brand: "Toyota", name: "Prius", color: "Black"}
+
+//Write a function getFullName that accepts an object representing a person and returns that person's full name in a string.
+
+const getFullName = function (person) {
+      console.log(person);
+      var newline = document.createElement("br");
+    Practice.append(newline);
+}
+
+getFullName({ first: "Elon", middle: "Reeve ", last: "Musk" }); // => "Elon Reeve Musk"
+getFullName({ first: "John", middle: "Mark ", last: "Doe" }); // => "John Mark Doe"
+
+//Write a function olderThan that accepts two objects personOne, personTwo and returns a string that represent who is older than the other.
+
+const olderThan = function (personOne, personTwo) {
+    if(personOne.age < personTwo.age){
+      Practice.append(personTwo.name+" is older than " + personOne.name);
+    }
+    else if (personTwo.age == personOne.age){
+      Practice.append(personTwo.name+" is as old as " + personOne.name);
+      var newline = document.createElement("br");
+    Practice.append(newline);
+    }
+    else{
+      Practice.append(personOne.name+" is as old as " + personTwo.name);
+
+    }
+    var newline = document.createElement("br");
+    Practice.append(newline);
+    
+};
+
+olderThan({ name: "John", age: 23 }, { name: "Jane", age: 26 }); // => "Jane is older than John"
+olderThan({ name: "Mark", age: 30 }, { name: "Smith", age: 25 }); // => "Mark is older than Smith"
+olderThan({ name: "Marry", age: 20 }, { name: "Sarah", age: 20 }); // => "Marry is as old as Sarah"
 
 
 
 
 
 
+// - access the value of Sarah's children and the value of Samuel's children
+// - add a child for Samuel named Sam that has two children Marry and Gwen
+// - delete the children property from the people who don't have children
+// HINT: read about the delete operator
+const family = {
+  name: "John",
+  children: [
+    {
+      name: "Bill",
+      children: [
+        {
+          name: "Mark",
+          children: [],
+        },
+        {
+          name: "Sarah",
+          children: [
+            {
+              name: "Smith",
+              children: [],
+            },
+            {
+              name: "Stan",
+              children: [],
+            },
+          ],
+        },
+        {
+          name: "Samuel",
+          children: [
+            {
+              name: "Marry",
+              children:[],
+            },
+            {
+              name :"Gwen",
+              children:[],
+            }
+          ],
+
+        },
+      ],
+    },
+    {
+      name: "Jane",
+      children: [],
+    },
+  ],
+};
 
 
+// things to validate:
+// 1- length of the email is greater than or equal 6
+// 2- length of the password is greater than or equal 8
+// 3- email contains `@` and `.com`
+// 4- the user must be in the users object
+// 5- both of the passwords match
+// 6- when you compare information make sure to reference the users object and access the value form there
+const users = {
+  mrpotato: {
+    email: "mr.potato@gmail.com",
+    password: "LonelyPotato",
+  },
+  thewiseman: {
+    email: "wiseMan9999@gmail.com",
+    password: "12345678",
+  },
+};
 
+const isValidUser = function (loginInfo) {
+      if(loginInfo.email.length >= 6 && loginInfo.password.length>= 8 && loginInfo.email.includes("@",".com")){
+        for(let name in users){
+          if(users[name] == loginInfo.username && users[name].password == loginInfo.password){
+            console.log("true");
+          }
+        }
+      }
+      else
+      {
+        console.log("false");
+      }
+}
 
+isValidUser({
+  username: "MrPotato",
+  email: "mr.potato@gmail.com",
+  password: "LonelyPotato",
+}); // => true
 
+isValidUser({
+  username: "MrPotato",
+  email: "mr.potato@gmail.com",
+  password: "Lonely",
+}); // => false
+
+isValidUser({
+  username: "MrPotato",
+  email: "mr.potato.gmail.com",
+  password: "LonelyPotato",
+}); // => false
 
 
 
@@ -750,9 +896,19 @@ sort([3, 6, 2, 0, 4, 1, 5]); // => [6, 5, 4, 3, 2, 1, 0]
 //Write a function compare that accepts an array and an object and returns true if all the array values are present as object values.
 
 const compare = function (array, object) {
-  
-      
+  // var x = false  ;
+  // for (let i in array){
+  //   if(object.values (array[i])==array[i]){
+  //            x = true;
+  //   }
+  //   else{
+  //     x = false;
+  //   }
+  // }
+  // console.log(object.values());
 };
+      
+
 
 compare(["one", "two", "three"], { 0: "one", 1: "two", 2: "three" }); // => true
 compare(["one", "two", "four"], { 0: "one", 1: "two", 2: "three" }); // => false
@@ -761,4 +917,41 @@ compare(["one", "two", "three"], { "foo": "one", "bar": "two" }); // => false
 
 
 
+//Write a function deleteKeys that accepts an array and an object and
+// returns the same object after removing all key-value pairs depending on the values in the array, 
+//the array will contain the key names that must be removed from the object.
+
+
+
+const deleteKeys = function (array, object) {
+    for (let x in array){
+    if(object.hasOwnProperty(array[x])){
+          Reflect.deleteProperty(object,array[x]);
+          
+    }
+  }
+  console.log(object);
+};
+
+deleteKeys(["one", "two"], { "one": "one", "two": "two", "three": "three" }); // => { three: "three" }
+deleteKeys(["four", "five", "one"], { 0: "one", 1: "two", 2: "three" }); // => { two: "two", three: "three" }
+
+ //6.   Write a function sum that returns the sum of all arguments passed to the function, 
+ //make sure not to use parameters.
+
+const sum_ = function () {
+        let sum = 0;
+      for (var i = 0 ; i < arguments.length;i++){
+        sum += arguments[i];
+      }
+      console.log(sum);
+};
+
+sum_(1, 2); // => 3
+sum_(1, 2, 3, 4); // => 10
+sum_(4, 5, 6, 7, 8); // => 30
+sum_(1); // => 1
+sum_(); // => 0
+
+//HINT: read about arguments.
 
