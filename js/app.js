@@ -462,3 +462,303 @@ reverseWords("Hello World"); // => "World Hello"
 
 
 
+//Write a function randomFruit that accepts an array of fruits and returns a random element from that array.
+
+const randomFruit = function (array) {
+  const fruit = Math.floor(Math.random() * array.length);
+  Practice.append(array[fruit]);
+  var newline = document.createElement("br");
+    Practice.append(newline);
+};
+
+const fruits = ["Apple", "banana", "Strawberry", "Mango"];
+
+randomFruit(fruits); // => Apple
+randomFruit(fruits); // => Apple
+randomFruit(fruits); // => Strawberry
+randomFruit(fruits); // => Banana
+
+
+
+
+//Write a function convertToString that accepts an array of strings and returns a string made out of the array values.
+
+const convertToString = function (array) {
+    let afterconvert = array.join(' ');
+    Practice.append(afterconvert);
+    var newline = document.createElement("br");
+    Practice.append(newline);
+};
+
+convertToString(["Hello", "i", "am", "John", "Doe"]); // => Hello i am John Doe
+convertToString(["Hello", "John", "i", "am", "Jane"]); // => Hello John i am Jane
+
+//Write a function search that accepts an array of strings and a string then returns whether the string is inside of the array or not
+
+const search = function (array, string) {
+    let result  = array.includes(string);
+    Practice.append("check if this element   "+ string + "  inside array = " + result );
+    var newline = document.createElement("br");
+    Practice.append(newline);
+};
+
+const fruits2 = ["Apple", "banana", "Strawberry", "Mango"];
+
+search(fruits2, "Apple"); // => true
+search(fruits2, "banana"); // => true
+search(fruits2, "John"); // => false
+
+// Object
+
+// - access the age property
+// - modify the person's age to be 23 years old
+// - add a property called `work` with the value of an object with two keys position and salary
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 24,
+};
+
+person.age = 23;
+person['work'] = {position:"developer" , salary : 350};
+
+
+console.log(person);
+
+// - access the first name property of both employees
+// - add an employee object with your name and the position of full-stack developer
+const employees = [
+  {
+    id: 1,
+    name: {
+      first: "John",
+      last: "Doe",
+    },
+    position: "Designer",
+  },
+  {
+    id: 2,
+    name: {
+      first: "Jane",
+      last: "Doe",
+    },
+    position: "Engineer",
+  },
+];
+
+const newemployee = {id:3 , name :{first:"bisher" , last: "Nobani"}, position: "full-stack developer"};
+
+let merged ={ ...employees , ...newemployee}
+
+console.log(merged);
+
+// - access the model value of both cars
+// - change the prius model from 2019 to 2020
+// - add a new car of your choice
+// - add a property `isAutomatic` for all three cars
+const cars = {
+  toyota: {
+    name: "prius",
+    model: 2019,
+  },
+  nissan: {
+    name: "leaf",
+    model: 2020,
+  },
+};
+
+cars.toyota['isAutomatic'] = "yes";
+cars.nissan['isAutomatic'] = "No";
+cars['ford'] = {name : "fusion" , model : "2010"};
+console.log(cars);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// LOOPS
+
+
+// Write a function sum that accepts an array of numbers and returns the sum of the numbers.
+
+
+const sum_1 = function (numbers) {
+  let result = 0
+  for(i in numbers){
+    result += numbers[i];
+  }
+  Practice.append("Sum == " + result);
+  var newline = document.createElement("br");
+    Practice.append(newline);
+};
+sum_1([1, 2, 3, 4, 5, 6]); // => 21
+
+
+
+//Write a function onlyOddNumbers that accepts an array of numbers and returns a new array with only the odd numbers.
+
+
+const filter = function (numbers) {
+  let result = [];
+  for(i in numbers){
+   if(numbers[i] % 2 == 1){
+     result.push(numbers[i]);
+   }
+  }
+  Practice.append("odd numbners in array  " + result);
+  var newline = document.createElement("br");
+    Practice.append(newline);
+};
+filter([0, 1, 2, 3, 4, 5, 6]); // => [1, 3, 5]
+
+
+
+
+//Write a function maximumNumber that accepts an array of numbers and returns the max number in the array.
+
+const maximumNumber = function (numbers) {
+      let max = 0;
+      for(i in numbers){
+      if(max < numbers[i]){
+        max = numbers[i];
+      }
+    }
+    Practice.append("Max number in array = " + max);
+    var newline = document.createElement("br");
+    Practice.append(newline);
+};
+maximumNumber([0, 5, 2, 10, 8, 6]); // => 10
+
+
+// Write a function totalBill that accepts an object representing separate bills and returns the sum of all bills.
+
+// Make sure to loop over the bills object
+
+const bills = {
+  waterBill: 25,
+  electricityBill: 50,
+  hospitalBill: 1000,
+};
+
+const totalBill = function (billsObject) {
+     
+      let bill = bills.waterBill + bills.electricityBill + bills.hospitalBill ;
+      Practice.append("total bill = " + bill);
+      var newline = document.createElement("br");
+    Practice.append(newline);   
+};
+totalBill(bills); // => 1075
+
+
+/* Write a function validateMessage that accepts an object representing a message and return the object 
+if it is valid and after removing any extra keys, the message will consist of three keys username, message, date with all of their values as strings return the object only 
+if all three keys are strings, 
+if the number of keys is more than three then delete the extra keys, if the message doesn’t have the right data type then return invalid message*/
+
+
+
+const messageOne = {
+  username: "John",
+  message: "Hello",
+  date: "01/01/2020",
+  someKey: "someValue",
+};
+
+const messageTwo = {
+  username: 10,
+  message: "Hello",
+  date: "01/01/2020",
+};
+
+const validateMessage = function (message) {
+   
+  // missing delete last element from obj messageOne :(
+    if(typeof message.username === 'string' && typeof message.message === 'string' && typeof message.date === 'string'){
+      console.log(message);
+    }
+    else{
+      console.log("invalid message");
+    }
+    var newline = document.createElement("br");
+    Practice.append(newline);
+  
+};
+validateMessage(messageOne); // => {username: "John", message: "Hello", date:"01/01/2020"}
+validateMessage(messageTwo); // => invalid message
+
+
+
+//Write a function onlyEven that accepts an array of numbers and returns the same array with only the even numbers.
+
+const onlyEven = function (numbers) {
+    let ever_arr = [];
+    for (let i in numbers){
+      if(numbers[i] % 2 == 0){
+        ever_arr.push(numbers[i])
+      }
+    }
+    Practice.append("Only even number  " + ever_arr);
+    var newline = document.createElement("br");
+    Practice.append(newline);
+  
+};
+onlyEven([0, 1, 2, 3, 4, 5, 6]) // =>[0, 2, 4, 6]
+onlyEven([1, 9, 2, 3, 4]) // => [2, 4]
+
+
+
+//Write a function sort that accepts an unordered array of numbers and returns the same array in a descending order.
+
+
+// make sure to use the same array
+const sort = function (numbers) {
+
+  numbers.sort(function(a, b){return b-a});
+  Practice.append("array descending order " + numbers);
+  var newline = document.createElement("br");
+    Practice.append(newline);
+  // TODO: Your code here
+};
+
+sort([0, 1, 2, 3, 4, 5, 6]); // => [6, 5, 4, 3, 2, 1, 0]
+sort([3, 6, 2, 0, 4, 1, 5]); // => [6, 5, 4, 3, 2, 1, 0]
+
+
+
+
+//Write a function compare that accepts an array and an object and returns true if all the array values are present as object values.
+
+const compare = function (array, object) {
+  
+      
+};
+
+compare(["one", "two", "three"], { 0: "one", 1: "two", 2: "three" }); // => true
+compare(["one", "two", "four"], { 0: "one", 1: "two", 2: "three" }); // => false
+compare(["one", "two"], { "foo": "one", "bar": "two", "baz": "three" }); // => true
+compare(["one", "two", "three"], { "foo": "one", "bar": "two" }); // => false
+
+
+
+
