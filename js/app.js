@@ -896,16 +896,18 @@ sort([3, 6, 2, 0, 4, 1, 5]); // => [6, 5, 4, 3, 2, 1, 0]
 //Write a function compare that accepts an array and an object and returns true if all the array values are present as object values.
 
 const compare = function (array, object) {
-  // var x = false  ;
-  // for (let i in array){
-  //   if(object.values (array[i])==array[i]){
-  //            x = true;
-  //   }
-  //   else{
-  //     x = false;
-  //   }
-  // }
-  // console.log(object.values());
+  let obj_arr = Object.values(object);
+  var x = false ;
+  for (let i in array){
+    if(array[i]=== obj_arr[i]){
+             x = true;
+    }
+    else{
+      x = false;
+      break;
+    }
+  }
+  console.log(x);
 };
       
 
@@ -924,10 +926,10 @@ compare(["one", "two", "three"], { "foo": "one", "bar": "two" }); // => false
 
 
 const deleteKeys = function (array, object) {
-    for (let x in array){
-    if(object.hasOwnProperty(array[x])){
-          Reflect.deleteProperty(object,array[x]);
-          
+    
+    for (x in object){
+    if(array.includes(object[x])){
+          delete object[x];
     }
   }
   console.log(object);
